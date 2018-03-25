@@ -49,10 +49,11 @@ class Block extends Component {
     const difficulty = parseInt(block.difficulty, 10);
     const difficultyTotal = parseInt(block.totalDifficulty, 10);
     return (
-      <div className="Block">
+      <div className="Block container">
+        <br/>
         <h2>Block Info</h2>
         <div>
-          <table>
+          <table responsive>
             <tbody>
               <tr><td className="tdLabel">Height: </td><td>{block.number}</td></tr>
               <tr><td className="tdLabel">Timestamp: </td><td>{this.state.block_ts}</td></tr>
@@ -73,7 +74,8 @@ class Block extends Component {
           </table>
         </div>
         <div>
-        <TransactionList block={block.hash} />
+          <br/>
+          <TransactionList block={block.hash} />
         </div>
       </div>
     );

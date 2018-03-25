@@ -45,7 +45,8 @@ class Transaction extends Component {
     const value = parseInt(tx.value, 10) / 1000000000000000000;
 //    const difficultyTotal = parseInt(block.totalDifficulty, 10);
     return (
-      <div className="Transaction">
+      <div className="Transaction container">
+        <br/>
         <h2>Transaction Info</h2>
         <div>
           <table>

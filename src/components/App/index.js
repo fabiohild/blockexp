@@ -1,7 +1,6 @@
 import React, {
   Component
 } from 'react';
-import logo from './logo.svg';
 import './style.css';
 import Block from './../Block';
 import Transaction from './../Transaction';
@@ -11,14 +10,65 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import createHistory from "history/createBrowserHistory"
+import { Navbar, Nav, FormGroup, FormControl, Button, NavItem } from 'react-bootstrap';
+import Web3 from 'web3';
+var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchValue: ''
+    };
+
+    // This binding is necessary to make `this` work in the callback
+    this.search = this.search.bind(this);
+  }
+
+
+  search(e) {
+    const history = createHistory({forceRefresh: true})
+    if (this.state.searchValue.length === 42) {
+      // address
+      history.push('/address/' + this.state.searchValue);
+    } else if (this.state.searchValue.length === 66) {
+      // block or tx
+      if (web3.eth.getTransaction(this.state.searchValue)) {
+        //transaction
+        history.push('/tx/' + this.state.searchValue);
+      } else {
+        // block
+        history.push('/block/' + this.state.searchValue);
+      }
+    } else {
+      console.log("nothing")
+
+    }
+  }
+
   render() {
     return ( 
       <div className = "App" >
-        <div className = "App-header">
-          <h2><img src = {logo} className = "App-logo" alt = "logo" / > <a href="/" className = "App-title"> Block Explorer </a></h2>
-        </div > 
+        <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/"><i className="fa fa-cubes"/> Block Explorer</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav pullRight>
+            <NavItem>
+            <Navbar.Form className="form-inline">
+              <FormGroup>
+                <FormControl type="text" placeholder="Tx, Block or Address" value={this.state.searchValue} onChange={evt => this.updateInputValue(evt)}/>
+              </FormGroup>{' '}
+              <Button className="btn-secondary" onClick={this.search}><i className="fa fa-search"/></Button>
+            </Navbar.Form>
+            </NavItem>
+          </Nav>
+        </Navbar>
         <div className = "App-nav" > { 
           <Router>
             <div>          
@@ -40,7 +90,14 @@ class App extends Component {
         } 
         </div> 
       </div>
+      
     );
+  }
+
+  updateInputValue(evt) {
+    this.setState({
+      searchValue: evt.target.value
+    });
   }
 }
 export default App;

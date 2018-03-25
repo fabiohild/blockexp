@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
-import { Link } from 'react-router-dom'
 import './style.css'
 import DataDash from './DataDash';
 import LatestBlocks from './LatestBlocks';
+import { Grid, Row, Col } from 'react-bootstrap'
 
 import Web3 from 'web3'
 var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
@@ -59,8 +58,21 @@ class Stats extends Component {
   render() {
       return (
           <div className="Stats">
-              <DataDash data={this.state}/>
-              <LatestBlocks data={this.state}/>
+              <br/>
+              <Grid>
+                <Row className="show-grid">
+                  <Col xs={6} sm={4}>
+                    <DataDash data={this.state}/>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <LatestBlocks data={this.state}/>
+                  </Col>
+                </Row>
+
+                <Row className="show-grid">
+
+                </Row>
+              </Grid>
           </div>
       );
   }

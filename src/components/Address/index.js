@@ -54,7 +54,8 @@ class Address extends Component {
   render() {
     const address = this.state.address;
     return (
-      <div className="Transaction">
+      <div className="Address container">
+        <br/>
         <h2>Address Info</h2>
         <div>
           <table>
