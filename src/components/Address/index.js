@@ -56,7 +56,7 @@ class Address extends Component {
     return (
       <div className="Address container">
         <br/>
-        <h2>Address Info</h2>
+        <h2><i className="fas fa-key"/> Address Info</h2>
         <div>
           <table>
             <tbody>

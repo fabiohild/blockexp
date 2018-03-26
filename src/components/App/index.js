@@ -55,7 +55,7 @@ class App extends Component {
         <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/"><i className="fa fa-cubes"/> Block Explorer</a>
+              <a href="/"><i className="fab fa-ethereum"/> Block Explorer</a>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav pullRight>
@@ -64,7 +64,7 @@ class App extends Component {
               <FormGroup>
                 <FormControl type="text" placeholder="Tx, Block or Address" value={this.state.searchValue} onChange={evt => this.updateInputValue(evt)}/>
               </FormGroup>{' '}
-              <Button className="btn-secondary" onClick={this.search}><i className="fa fa-search"/></Button>
+              <Button className="btn-secondary" onClick={this.search}><i className="fas fa-search"/></Button>
             </Navbar.Form>
             </NavItem>
           </Nav>

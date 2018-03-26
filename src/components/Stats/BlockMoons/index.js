@@ -64,10 +64,10 @@ class BlockMoons extends Component {
         <ResponsiveContainer width="100%" height={120}>
           <ScatterChart width={900} height={120} margin={{top: 40, right: 0, bottom: 0, left: 0}}>
                 <XAxis type="number" height={20} domain={['auto', 'auto']} dataKey="timestamp" name="Timestamp" tick={{strokeWidth: 1}} tickFormatter={formatXAxis} />
-                <YAxis type="number" dataKey="size" name="Block Size" height={10} width={80} tick={false} tickLine={false} axisLine={false} />
+                <YAxis type="number" dataKey="number" name="Block Number" height={10} width={80} tick={false} tickLine={false} axisLine={false} />
                 <ZAxis type="number" dataKey="transactions" name="Transactions" domain={domain} range={range} />
-                <Tooltip cursor={false} wrapperStyle={{ background: "#303030", border: 0}} itemStyle={{ color: "#8884d8" }} content={this.renderTooltip} />
-                <Scatter data={chartData} shape="square" fill='#8884d8'/>
+                <Tooltip cursor={false} wrapperStyle={{ background: "#303030", border: 0}} itemStyle={{ color: "#00bc8c" }} content={this.renderTooltip} payload={[{ name: '05-01', value: 12, unit: 'kg' }]} itemSorter={(item1, item2) => item1.name.localeCompare(item2.name)}/>
+                <Scatter data={chartData} shape="square" fill='#8884d8' stroke="#222" strokeWidth={1}/>
           </ScatterChart>
         </ResponsiveContainer>
         </div>

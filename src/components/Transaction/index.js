@@ -47,13 +47,13 @@ class Transaction extends Component {
     return (
       <div className="Transaction container">
         <br/>
-        <h2>Transaction Info</h2>
+        <h2><i className="far fa-file-alt"/> Transaction Info</h2>
         <div>
           <table>
             <tbody>
               <tr><td className="tdLabel">Tx Hash: </td><td>{tx.hash}</td></tr>
               <tr><td className="tdLabel">Tx Status: </td><td>{tx.currTxReceipt.status}</td></tr>
-              <tr><td className="tdLabel">BLock Hash: </td><td><Link to={`../block/${tx.blockHash}`}>{tx.blockHash}</Link></td></tr>
+              <tr><td className="tdLabel">Block Hash: </td><td><Link to={`../block/${tx.blockHash}`}>{tx.blockHash}</Link></td></tr>
               <tr><td className="tdLabel">Block Number: </td><td>{tx.blockNumber}</td></tr>
               <tr><td className="tdLabel">From: </td><td><Link to={`../address/${tx.from}`}>{tx.from}</Link></td></tr>
               <tr><td className="tdLabel">To: </td><td><Link to={`../address/${tx.to}`}>{tx.to}</Link></td></tr>

@@ -74,6 +74,7 @@ class Stats extends Component {
                   <Col xs={12} sm={12}>
                     <br/>
                     <BlockMoons data={this.state}/>
+                    <br/>
                   </Col>
                 </Row>
 

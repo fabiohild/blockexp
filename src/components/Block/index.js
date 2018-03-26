@@ -51,7 +51,7 @@ class Block extends Component {
     return (
       <div className="Block container">
         <br/>
-        <h2>Block Info</h2>
+        <h2><i className="fa fa-cube"/> Block Info</h2>
         <div>
           <table responsive>
             <tbody>

@@ -40,7 +40,6 @@ class BlockStats extends Component {
 
     return (
       <div className="BlockStats">
-        <h2>Block Stats</h2>
         <div>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart
