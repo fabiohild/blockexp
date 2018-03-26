@@ -5,6 +5,10 @@ import BlockStats from './BlockStats';
 import LatestBlocks from './LatestBlocks';
 import LatestTransactions from './LatestTransactions';
 import BlockMoons from './BlockMoons';
+import AvgBlockTime from './AvgBlockTime';
+import AvgTxCount from './AvgTxCount';
+import LastBlock from './LastBlock';
+import GasUse from './GasUse';
 import { Grid, Row, Col } from 'react-bootstrap'
 
 import Web3 from 'web3'
@@ -61,22 +65,40 @@ class Stats extends Component {
           <div className="Stats">
               <br/>
               <Grid>
+
                 <Row className="show-grid">
                   <Col xs={6} sm={4}>
                     <DataDash data={this.state}/>
                   </Col>
                   <Col xs={6} sm={8}>
                     <BlockStats data={this.state}/>
+                    <br/>
+                  </Col>
+                </Row>
+
+                <Row className="show-grid">
+                  <Col xs={4} sm={3}>
+                    <AvgBlockTime data={this.state}/>
+                  </Col>
+                  <Col sm={4} md={3}>
+                    <LastBlock data={this.state}/>
+                  </Col>
+                  <Col sm={4} md={3}>
+                    <AvgTxCount data={this.state}/>
+                  </Col>
+                  <Col sm={4} md={3}>
+                    <GasUse data={this.state}/>
                   </Col>
                 </Row>
 
                 <Row className="show-grid">
                   <Col xs={12} sm={12}>
-                    <br/>
                     <BlockMoons data={this.state}/>
                     <br/>
                   </Col>
                 </Row>
+
+
 
                 <Row className="show-grid">
                   <Col xs={12} lg={6}>
