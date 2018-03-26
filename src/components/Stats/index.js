@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './style.css'
 import DataDash from './DataDash';
+import BlockStats from './BlockStats';
 import LatestBlocks from './LatestBlocks';
+import LatestTransactions from './LatestTransactions';
+import BlockMoons from './BlockMoons';
 import { Grid, Row, Col } from 'react-bootstrap'
 
 import Web3 from 'web3'
@@ -21,9 +24,7 @@ class Stats extends Component {
   }
 
   componentWillMount() {
-    //console.log(web3.eth.accounts); - infura não funciona
     var curr_block_no = web3.eth.blockNumber;
-    console.log(curr_block_no);
     this.setState({
       curr_block: curr_block_no
     });
@@ -64,13 +65,27 @@ class Stats extends Component {
                   <Col xs={6} sm={4}>
                     <DataDash data={this.state}/>
                   </Col>
-                  <Col xs={12} sm={8}>
-                    <LatestBlocks data={this.state}/>
+                  <Col xs={6} sm={8}>
+                    <BlockStats data={this.state}/>
                   </Col>
                 </Row>
 
                 <Row className="show-grid">
+                  <Col xs={12} sm={12}>
+                    <br/>
+                    <BlockMoons data={this.state}/>
+                  </Col>
+                </Row>
 
+                <Row className="show-grid">
+                  <Col xs={12} lg={6}>
+                    <br/>
+                    <LatestTransactions data={this.state}/>
+                  </Col>
+                  <Col xs={12} lg={6}>
+                    <br/>
+                    <LatestBlocks data={this.state}/>
+                  </Col>
                 </Row>
               </Grid>
           </div>

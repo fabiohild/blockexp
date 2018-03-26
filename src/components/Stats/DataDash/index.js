@@ -17,7 +17,6 @@ class DataDash extends Component {
   
   getDataState(data) {
 
-    console.log(data);
     // Set the Component state
     this.setState({
       data: data

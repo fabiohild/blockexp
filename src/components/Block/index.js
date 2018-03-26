@@ -64,7 +64,7 @@ class Block extends Component {
               <tr><td className="tdLabel">Nonce: </td><td>{block.nonce}</td></tr>
               <tr><td className="tdLabel">Size: </td><td>{block.size} bytes</td></tr>
               <tr><td className="tdLabel">Difficulty: </td><td>{difficulty}</td></tr>
-              <tr><td className="tdLabel">Difficulty: </td><td>{difficultyTotal}</td></tr>
+              <tr><td className="tdLabel">Total Difficulty: </td><td>{difficultyTotal}</td></tr>
               <tr><td className="tdLabel">Gas Limit: </td><td>{block.gasLimit}</td></tr>
               <tr><td className="tdLabel">Gas Used: </td><td>{block.gasUsed}</td></tr>
               <tr><td className="tdLabel">Sha3Uncles: </td><td>{block.sha3Uncles}</td></tr>
