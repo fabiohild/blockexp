@@ -47,7 +47,7 @@ class TransactionList extends Component {
       });
     return (
       <div className="TransactionList">
-        <div className="card text-white bg-secondary mb-3">
+        <div className="card border-secondary mb-3">
           <div className="card-header">Transactions</div>
           <div className="card-body">
             <Table striped responsive>

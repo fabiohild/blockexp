@@ -85,7 +85,7 @@ class Address extends Component {
         </div>
         { tableRows.length > 0 ?
           <div className="TransactionList">
-            <div className="card text-white bg-secondary mb-3">
+            <div className="card border-secondary mb-3">
               <div className="card-header">Transactions</div>
               <div className="card-body">
                 <Table striped responsive>
@@ -103,7 +103,7 @@ class Address extends Component {
             </div>
           </div>
             :
-            <h2></h2>
+            <span></span>
         }
 
       </div>
