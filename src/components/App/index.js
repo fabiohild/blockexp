@@ -11,7 +11,7 @@ import {
   Route
 } from 'react-router-dom'
 import createHistory from "history/createBrowserHistory"
-import { Navbar, Nav, FormGroup, FormControl, Button, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, FormGroup, FormControl, Button, NavItem} from 'react-bootstrap';
 import Web3 from 'web3';
 import Constants from './../Constants';
 
@@ -62,12 +62,12 @@ class App extends Component {
           </Navbar.Header>
           <Nav pullRight>
             <NavItem>
-            <Navbar.Form className="form-inline">
-              <FormGroup>
-                <FormControl type="text" placeholder="Tx, Block or Address" value={this.state.searchValue} onChange={evt => this.updateInputValue(evt)}/>
-              </FormGroup>{' '}
-              <Button className="btn-secondary" onClick={this.search}><i className="fas fa-search"/></Button>
-            </Navbar.Form>
+              <Navbar.Form className="form-inline">
+                <FormGroup>
+                  <FormControl type="text" placeholder="Tx, Block or Address" value={this.state.searchValue} onChange={evt => this.updateInputValue(evt)}/>
+                </FormGroup>{' '}
+                <Button className="btn-secondary" onClick={this.search}><i className="fas fa-search"/></Button>
+              </Navbar.Form>
             </NavItem>
           </Nav>
         </Navbar>

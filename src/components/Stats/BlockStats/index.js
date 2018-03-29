@@ -52,9 +52,9 @@ class BlockStats extends Component {
             
             <Tooltip cursor={false} wrapperStyle={{ background: "#303030", border: 0}} />
             <Legend />
-            <Line type="monotone" dataKey="transactions" stroke="#E74C3C" strokeWidth={2} yAxisId={1} dot={{ stroke: '#E74C3C', fill: '#E74C3C'  }} activeDot={{ stroke: '#E74C3C', strokeWidth: 2, r: 4 }} name="Transactions"/>
-            <Line type="monotone" dataKey="size" stroke="#00bc8c" strokeWidth={2} yAxisId={2} dot={{ stroke: '#00bc8c', fill: '#00bc8c'  }} activeDot={{ stroke: '#00bc8c', strokeWidth: 2, r: 4 }} name="Size"/>
-            <Line type="monotone" dataKey="gasPrice" stroke="#F39C12" strokeWidth={2} yAxisId={3} dot={{ stroke: '#F39C12', fill: '#F39C12'  }} activeDot={{ stroke: '#F39C12', strokeWidth: 2, r: 4 }} name="Gas Price"/>
+            <Line animationEasing='ease-out' animationDuration={500} type="monotone" dataKey="transactions" stroke="#E74C3C" strokeWidth={2} yAxisId={1} dot={{ stroke: '#E74C3C', fill: '#E74C3C'  }} activeDot={{ stroke: '#E74C3C', strokeWidth: 2, r: 4 }} name="Transactions"/>
+            <Line type="monotone" animationEasing='ease-in-out' animationDuration={500} dataKey="size" stroke="#00bc8c" strokeWidth={2} yAxisId={2} dot={{ stroke: '#00bc8c', fill: '#00bc8c'  }} activeDot={{ stroke: '#00bc8c', strokeWidth: 2, r: 4 }} name="Size"/>
+            <Line type="monotone" animationEasing='linear' animationDuration={500} dataKey="gasPrice" stroke="#F39C12" strokeWidth={2} yAxisId={3} dot={{ stroke: '#F39C12', fill: '#F39C12'  }} activeDot={{ stroke: '#F39C12', strokeWidth: 2, r: 4 }} name="Gas Price"/>
           </LineChart>
         </ResponsiveContainer>
         </div>

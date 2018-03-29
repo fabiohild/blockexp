@@ -67,7 +67,7 @@ class BlockMoons extends Component {
                 <YAxis type="number" dataKey="number" name="Block Number" height={10} width={80} tick={false} tickLine={false} axisLine={false} />
                 <ZAxis type="number" dataKey="transactions" name="Transactions" domain={domain} range={range} />
                 <Tooltip cursor={false} wrapperStyle={{ background: "#303030", border: 0}} itemStyle={{ color: "#00bc8c" }} content={this.renderTooltip} payload={[{ name: '05-01', value: 12, unit: 'kg' }]} itemSorter={(item1, item2) => item1.name.localeCompare(item2.name)}/>
-                <Scatter data={chartData} shape="square" fill='#8884d8' stroke="#222" strokeWidth={1}/>
+                <Scatter data={chartData} shape="square" fill='#8884d8' stroke="#222" strokeWidth={1} animationEasing="linear"/>
           </ScatterChart>
         </ResponsiveContainer>
         </div>

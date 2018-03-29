@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
 import Constants from './../Constants';
+import { Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
 import Web3 from 'web3';
 var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
@@ -9,7 +12,8 @@ class Address extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addressData: []
+      addressData: [],
+      transactionData: []
       }
   }
   
@@ -36,12 +40,15 @@ class Address extends Component {
     currAddressObj.txCount = parseInt(web3.eth.getTransactionCount(address), 10); 
     
     // getting transactions from address - does not work with Infura
+    let template = this;
     web3.eth.filter({
         address: address,
         fromBlock: 1,
         toBlock: 'latest'
         }).get(function (err, result) {
-         console.log(result)
+          template.setState({
+            transactionData: result
+          })
         })
 
     // Set the Component state
@@ -52,6 +59,16 @@ class Address extends Component {
   
   render() {
     const address = this.state.address;
+    var transactions = this.state.transactionData;
+    var tableRows = [];
+      _.each(transactions, (value, index) => {
+        tableRows.push(
+          <tr key={value.transactionHash + value.logIndex}>
+            <td><Link to={`/block/${value.blockHash}`}><small>{value.blockNumber}</small></Link></td>
+            <td><Link to={`/tx/${value.transactionHash}`}><small>{value.transactionHash}</small></Link></td>
+          </tr>
+        )
+      });
     return (
       <div className="Address container">
         <br/>
@@ -64,7 +81,31 @@ class Address extends Component {
               <tr><td className="tdLabel">Tx Count: </td><td>{address.txCount}</td></tr>
             </tbody>
           </table>
+          <br/>
         </div>
+        { tableRows.length > 0 ?
+          <div className="TransactionList">
+            <div className="card text-white bg-secondary mb-3">
+              <div className="card-header">Transactions</div>
+              <div className="card-body">
+                <Table striped responsive>
+                  <thead>
+                    <tr>
+                      <th>Block no.</th>
+                      <th>Tx Hash</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableRows}
+                  </tbody>
+                </Table>
+              </div>
+            </div>
+          </div>
+            :
+            <h2></h2>
+        }
+
       </div>
     );
   }
