@@ -30,11 +30,9 @@ class Transaction extends Component {
   }
   
   getTxState(tx_hash) {
-    console.log("Tx hash: " + tx_hash);
     // Use web3 to get the Block object
     var currTxObj = web3.eth.getTransaction(tx_hash)
     currTxObj.currTxReceipt = web3.eth.getTransactionReceipt(tx_hash)
-    console.log(currTxObj);
     // Set the Component state
     this.setState({
       tx: currTxObj

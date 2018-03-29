@@ -28,11 +28,11 @@ class LatestBlocks extends Component {
   render() {
       var data = this.state.data;
       var tableRows = [];
-      _.each(data.block_ids, (value, index) => {
+      _.each(data.blocks, (block, index) => {
         tableRows.push(
-          <tr key={data.block_hashes[index]}>
-            <td className="tdCenter"><small>{data.block_ids[index]}</small></td>
-            <td><small><Link to={`/block/${data.block_hashes[index]}`}>{data.block_hashes[index]}</Link></small></td>
+          <tr key={block.number}>
+            <td className="tdCenter"><small>{block.number}</small></td>
+            <td><small><Link to={`/block/${block.hash}`}>{block.hash}</Link></small></td>
           </tr>
         )
       });

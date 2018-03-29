@@ -21,20 +21,10 @@ class TransactionList extends Component {
     this.getTransactionListState(this.props.block);
   }
   
-  componentWillReceiveProps(nextProps) {
-    var props_old = this.props.block;
-    var props_new = nextProps.block;
-    // compare old and new URL parameter (block hash)
-    // if different, reload state using web3
-    if (props_old !== props_new)
-    this.getTransactionListState(props_new);
-  }
-  
   getTransactionListState(block) {
     var currblock = web3.eth.getBlock(block, true)
     var currListObj = currblock.transactions
     
-    console.log(currListObj);
     // Set the Component state
     this.setState({
       transactions: currListObj
@@ -58,8 +48,8 @@ class TransactionList extends Component {
     return (
       <div className="TransactionList">
         <div className="card text-white bg-secondary mb-3">
-          <div class="card-header">Transactions</div>
-          <div class="card-body">
+          <div className="card-header">Transactions</div>
+          <div className="card-body">
             <Table striped responsive>
               <thead>
                 <tr>

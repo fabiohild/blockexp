@@ -15,16 +15,18 @@ import Web3 from 'web3'
 import Constants from './../Constants';
 var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
 
+var TimerMixin = require('react-timer-mixin');
+
 class Stats extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      block_ids: [],
-      block_hashes: [],
       blocks: [],
       curr_block: null,
       hashrate: null,
+      gasPrice: null,
+      peerCount: null
     }
   }
 
@@ -36,24 +38,48 @@ class Stats extends Component {
     this.getBlocks(curr_block_no);
   }
 
+  componentDidMount(){
+    this.timer = TimerMixin.setInterval( () => { 
+        var curr_block_no = web3.eth.blockNumber;
+
+        if (curr_block_no > this.state.blocks[0].number) {
+          const block = web3.eth.getBlock(curr_block_no, true);
+          const hashrate = web3.eth.hashrate;
+          const gasPrice = web3.eth.gasPrice;
+          const peerCount = web3.net.peerCount;
+          
+          if (block){
+            this.state.blocks.pop();
+            this.state.blocks.unshift(block);
+          }
+
+          this.setState({
+            curr_block: curr_block_no,
+            hashrate: hashrate,
+            gasPrice: gasPrice,
+            peerCount: peerCount
+        })
+        }
+
+     }, 3000);
+  } 
+
+  componentWillUnmount() {
+    TimerMixin.clearTimeout(this.timer);
+  }
+
   getBlocks(curr_block_no) {
-    const block_ids = this.state.block_ids.slice();
-    const block_hashes = this.state.block_hashes.slice();
     const blocks = this.state.blocks.slice();
     var max_blocks = 10;
     if (curr_block_no < max_blocks) max_blocks = curr_block_no;
     for (var i = 0; i < max_blocks; i++, curr_block_no--) {
       var currBlockObj = web3.eth.getBlock(curr_block_no, true);
-      block_ids.push(currBlockObj.number);
-      block_hashes.push(currBlockObj.hash);
       blocks.push(currBlockObj);
     }
-    var hashrate = web3.eth.hashrate;
-    var gasPrice = web3.eth.gasPrice;
-    var peerCount = web3.net.peerCount;
+    const hashrate = web3.eth.hashrate;
+    const gasPrice = web3.eth.gasPrice;
+    const peerCount = web3.net.peerCount;
     this.setState({
-      block_ids: block_ids,
-      block_hashes: block_hashes,
       blocks: blocks,
       hashrate: hashrate,
       gasPrice: gasPrice,

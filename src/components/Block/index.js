@@ -32,10 +32,8 @@ class Block extends Component {
   }
   
   getBlockState(block_hash) {
-    console.log("Block hash: " + block_hash);
     // Use web3 to get the Block object
     var currBlockObj = web3.eth.getBlock(block_hash);
-    console.log(currBlockObj);
     // Set the Component state
     this.setState({
       block_id: currBlockObj.number,
@@ -55,7 +53,7 @@ class Block extends Component {
         <br/>
         <h2><i className="fa fa-cube"/> Block Info</h2>
         <div>
-          <table responsive>
+          <table>
             <tbody>
               <tr><td className="tdLabel">Height: </td><td>{block.number}</td></tr>
               <tr><td className="tdLabel">Timestamp: </td><td>{this.state.block_ts}</td></tr>
