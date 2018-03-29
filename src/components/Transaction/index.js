@@ -3,7 +3,8 @@ import './style.css';
 import { Link } from 'react-router-dom'
 
 import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
+import Constants from './../Constants';
+var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
 
 class Transaction extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Transaction extends Component {
     return (
       <div className="Transaction container">
         <br/>
-        <h2><i className="far fa-file-alt"/> Transaction Info</h2>
+        <h2><i className="far fa-file-code"/> Transaction Info</h2>
         <div>
           <table>
             <tbody>

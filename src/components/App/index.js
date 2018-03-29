@@ -13,7 +13,9 @@ import {
 import createHistory from "history/createBrowserHistory"
 import { Navbar, Nav, FormGroup, FormControl, Button, NavItem } from 'react-bootstrap';
 import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
+import Constants from './../Constants';
+
+var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
 
 
 class App extends Component {

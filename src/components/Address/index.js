@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
+import Constants from './../Constants';
 
 import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
+var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
 
 class Address extends Component {
   constructor(props) {
@@ -28,14 +29,13 @@ class Address extends Component {
   }
   
   getAddressState(address) {
-    console.log("Address: " + address);
     // Use web3 to get the Block object
     var currAddressObj = {}
     currAddressObj.address = address;
     currAddressObj.balance = parseInt(web3.eth.getBalance(address), 10) / 1000000000000000000; 
     currAddressObj.txCount = parseInt(web3.eth.getTransactionCount(address), 10); 
     
-    // getting transactions from address
+    // getting transactions from address - does not work with Infura
     web3.eth.filter({
         address: address,
         fromBlock: 1,
@@ -44,7 +44,6 @@ class Address extends Component {
          console.log(result)
         })
 
-    console.log(currAddressObj);
     // Set the Component state
     this.setState({
       address: currAddressObj

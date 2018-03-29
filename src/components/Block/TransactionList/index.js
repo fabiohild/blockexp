@@ -3,9 +3,10 @@ import './style.css';
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import { Table } from 'react-bootstrap'
+import Constants from './../../Constants';
 
 import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/kak6M2Qgf7oHycGaCI2E"))
+var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
 
 class TransactionList extends Component {
   constructor(props) {
