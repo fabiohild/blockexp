@@ -33,6 +33,11 @@ class Transaction extends Component {
     // Use web3 to get the Block object
     var currTxObj = web3.eth.getTransaction(tx_hash)
     currTxObj.currTxReceipt = web3.eth.getTransactionReceipt(tx_hash)
+    if (currTxObj.currTxReceipt.status == "0x1")
+      currTxObj.status = "success"
+    else
+      currTxObj.status = "fail"
+
     // Set the Component state
     this.setState({
       tx: currTxObj
@@ -51,7 +56,7 @@ class Transaction extends Component {
           <table>
             <tbody>
               <tr><td className="tdLabel">Tx Hash: </td><td>{tx.hash}</td></tr>
-              <tr><td className="tdLabel">Tx Status: </td><td>{tx.currTxReceipt.status}</td></tr>
+              <tr><td className="tdLabel">Tx Status: </td><td>{tx.status}</td></tr>
               <tr><td className="tdLabel">Block Hash: </td><td><Link to={`../block/${tx.blockHash}`}>{tx.blockHash}</Link></td></tr>
               <tr><td className="tdLabel">Block Number: </td><td>{tx.blockNumber}</td></tr>
               <tr><td className="tdLabel">From: </td><td><Link to={`../address/${tx.from}`}>{tx.from}</Link></td></tr>
