@@ -1,8 +1,8 @@
 
 
-# Project Title
+# Ethereum Block Explorer
 
-Ethereum block explorer
+Ethereum block explorer made with React and web3.js/infura.io
 
 ### Installing
 
