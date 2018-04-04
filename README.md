@@ -4,6 +4,8 @@
 
 Ethereum block explorer made with React and web3.js/infura.io
 
+Demo: [https://blockexp.herokuapp.com/](https://blockexp.herokuapp.com/) 
+
 ### Installing
 
 ```
