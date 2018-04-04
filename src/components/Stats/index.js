@@ -70,7 +70,7 @@ class Stats extends Component {
 
   getBlocks(curr_block_no) {
     const blocks = this.state.blocks.slice();
-    var max_blocks = 10;
+    var max_blocks = Constants.MAX_BLOCKS;
     if (curr_block_no < max_blocks) max_blocks = curr_block_no;
     for (var i = 0; i < max_blocks; i++, curr_block_no--) {
       var currBlockObj = web3.eth.getBlock(curr_block_no, true);

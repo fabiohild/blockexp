@@ -33,10 +33,10 @@ class Transaction extends Component {
     // Use web3 to get the Block object
     var currTxObj = web3.eth.getTransaction(tx_hash)
     currTxObj.currTxReceipt = web3.eth.getTransactionReceipt(tx_hash)
-    if (currTxObj.currTxReceipt.status == "0x1")
-      currTxObj.status = "success"
+    if (currTxObj.currTxReceipt.status === "0x1")
+      currTxObj.status = "Success"
     else
-      currTxObj.status = "fail"
+      currTxObj.status = "Fail"
 
     // Set the Component state
     this.setState({
