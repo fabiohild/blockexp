@@ -39,7 +39,7 @@ class TxPerSec extends Component {
             <div className="card border-secondary mb-3">
                 <div className="card-header" style={{textAlign: "center"}}>Tx / Sec</div>
                 <div className="card-body">
-                    <h1 className="card-title" style={{textAlign: "center"}}><i className="fas fa-fire"/> {average}</h1>
+                    <h1 className="card-title" style={{textAlign: "center"}}><i className="fas fa-tachometer-alt"/> {average}</h1>
                 </div>
             </div>
           </div>
