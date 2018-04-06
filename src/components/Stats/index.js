@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import './style.css'
 import DataDash from './DataDash';
-import BlockStats from './BlockStats';
-import LatestBlocks from './LatestBlocks';
-import LatestTransactions from './LatestTransactions';
-import BlockMoons from './BlockMoons';
+import { Grid, Row, Col } from 'react-bootstrap'
+
 import AvgBlockTime from './AvgBlockTime';
 import AvgTxCount from './AvgTxCount';
-import LastBlock from './LastBlock';
+import BlockStats from './BlockStats';
+import BlockMoons from './BlockMoons';
 import GasUse from './GasUse';
-import { Grid, Row, Col } from 'react-bootstrap'
+import LastBlock from './LastBlock';
+import LatestBlocks from './LatestBlocks';
+import LatestTransactions from './LatestTransactions';
+import TxPerSec from './TxPerSec';
 
 import Web3 from 'web3'
 import Constants from './../Constants';
@@ -114,7 +116,8 @@ class Stats extends Component {
                     <AvgTxCount data={this.state}/>
                   </Col>
                   <Col sm={4} md={3}>
-                    <GasUse data={this.state}/>
+                    {/* <GasUse data={this.state}/> */}
+                    <TxPerSec data={this.state}/>
                   </Col>
                 </Row>
 
