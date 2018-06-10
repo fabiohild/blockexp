@@ -16,7 +16,6 @@ import TxPerSec from './TxPerSec';
 import Constants from './../Constants';
 
 import {
-  web3,
   web3_eth_getBlockNumber,
   web3_eth_getBlock,
   web3_eth_gasPrice,
@@ -80,9 +79,6 @@ class Stats extends Component {
     if (curr_block_no < max_blocks) max_blocks = curr_block_no;
     for (var i = 0; i < max_blocks; i++, curr_block_no--) {
       var currBlockObj = await web3_eth_getBlock(curr_block_no, true);
-      if (!currBlockObj.transactions){
-        currBlockObj.transactions = [];
-      }
       blocks.push(currBlockObj);
     }
     const hashrate = await web3_eth_getBlock;
