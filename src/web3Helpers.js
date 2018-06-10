@@ -19,8 +19,7 @@ export const web3_eth_getBlock = i => {
       if (err) {
         reject(err);
       }
-      console.log(i, err, data);
-      resolve('poop');
+      resolve(data);
     });
   });
 };

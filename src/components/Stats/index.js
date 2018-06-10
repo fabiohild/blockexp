@@ -46,7 +46,7 @@ class Stats extends Component {
   }
 
   componentDidMount() {
-    this.timer = TimerMixin.setInterval( async () => {
+    this.timer = TimerMixin.setInterval(async () => {
       var curr_block_no = await web3_eth_getBlockNumber;
 
       if (curr_block_no > this.state.blocks[0].number) {
@@ -80,6 +80,9 @@ class Stats extends Component {
     if (curr_block_no < max_blocks) max_blocks = curr_block_no;
     for (var i = 0; i < max_blocks; i++, curr_block_no--) {
       var currBlockObj = await web3_eth_getBlock(curr_block_no, true);
+      if (!currBlockObj.transactions){
+        currBlockObj.transactions = [];
+      }
       blocks.push(currBlockObj);
     }
     const hashrate = await web3_eth_getBlock;
@@ -94,6 +97,9 @@ class Stats extends Component {
   }
 
   render() {
+    if (!this.state || !this.state.blocks.length) {
+      return <pre> loading...</pre>;
+    }
     return (
       <div className="Stats">
         <br />
