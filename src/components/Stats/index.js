@@ -116,7 +116,7 @@ class Stats extends Component {
                     <AvgTxCount data={this.state}/>
                   </Col>
                   <Col sm={4} md={3}>
-                    {/* <GasUse data={this.state}/> */}
+                    <GasUse data={this.state}/>
                     <TxPerSec data={this.state}/>
                   </Col>
                 </Row>
