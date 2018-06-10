@@ -27,6 +27,11 @@ class LatestTransactions extends Component {
   
   render() {
       var data = this.state.data;
+
+      if (!data.length){
+        return <pre>dead</pre>
+      }
+      
       var tableRows = [];
 
       _.each(data.blocks[0].transactions, (value, index) => {

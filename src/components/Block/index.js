@@ -3,10 +3,7 @@ import './style.css';
 import { Link } from 'react-router-dom'
 import TransactionList from './TransactionList';
 
-import Web3 from 'web3';
-import Constants from './../Constants';
-
-var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
+import { web3_eth_getBlock } from '../../web3Helpers'
 
 class Block extends Component {
   constructor(props) {
@@ -31,9 +28,9 @@ class Block extends Component {
     this.getBlockState(block_hash_new);
   }
   
-  getBlockState(block_hash) {
+  async getBlockState(block_hash) {
     // Use web3 to get the Block object
-    var currBlockObj = web3.eth.getBlock(block_hash);
+    var currBlockObj = await web3_eth_getBlock(block_hash);
     // Set the Component state
     this.setState({
       block_id: currBlockObj.number,

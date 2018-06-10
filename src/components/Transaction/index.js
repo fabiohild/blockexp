@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom'
 
-import Web3 from 'web3';
-import Constants from './../Constants';
-var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
+import { web3 } from '../../web3Helpers'
 
 class Transaction extends Component {
   constructor(props) {

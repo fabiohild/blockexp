@@ -33,7 +33,22 @@ class DataDash extends Component {
   }
   
   render() {
-    const data = this.state.data;
+    if (!this.state.data){
+      return 
+    }
+    let data = this.state.data;
+
+    console.log(data)
+
+    data = {
+      blocks: [{
+        difficulty: 1,
+        gasLimit: 10
+      }],
+      gasPrice: '10',
+
+    }
+
     const difficulty = parseInt(data.blocks[0].difficulty, 10);
     const gasPrice = parseInt(data.gasPrice, 10);
     const gasLimit = parseInt(data.blocks[0].gasLimit, 10);

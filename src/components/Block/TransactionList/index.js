@@ -3,10 +3,8 @@ import './style.css';
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import { Table } from 'react-bootstrap'
-import Constants from './../../Constants';
 
-import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
+import { web3, web3_eth_getBlock } from '../../../web3Helpers'
 
 class TransactionList extends Component {
   constructor(props) {
@@ -21,8 +19,8 @@ class TransactionList extends Component {
     this.getTransactionListState(this.props.block);
   }
   
-  getTransactionListState(block) {
-    var currblock = web3.eth.getBlock(block, true)
+  async getTransactionListState(block) {
+    var currblock = await web3_eth_getBlock(block, true)
     var currListObj = currblock.transactions
     
     // Set the Component state
