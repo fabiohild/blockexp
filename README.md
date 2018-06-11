@@ -6,6 +6,8 @@ Ethereum block explorer made with React, Github Pages and MetaMask
 
 Demo: [https://blockexp.transmute.network/](https://blockexp.transmute.network/) 
 
+You can change the network in metamask, and the explorer will update. This is useful when you need to test multiple testnets or private nets.
+
 ### Installing
 
 ```
