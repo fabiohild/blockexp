@@ -17,6 +17,12 @@ npm i
 npm start
 ```
 
+### Chrome Extension
+
+If you want to add special support to the block explorer, there is a chrome extension example provided.
+
+See the [README](./blockexp-extension/README.md)
+
 ## License
 
 This is a fork of: https://github.com/fabiohild/blockexp

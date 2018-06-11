@@ -94,7 +94,7 @@ class Address extends Component {
             <tbody>
               <tr>
                 <td className="tdLabel">Address: </td>
-                <td>{address.address}</td>
+                <td className='eth-address'>{address.address}</td>
               </tr>
               <tr>
                 <td className="tdLabel">Balance: </td>
