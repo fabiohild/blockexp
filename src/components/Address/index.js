@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './style.css';
-import Constants from './../Constants';
 import { Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 
 import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
+var web3 = new Web3(window.web3.currentProvider)
 
 class Address extends Component {
   constructor(props) {
