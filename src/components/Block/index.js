@@ -3,6 +3,8 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import TransactionList from './TransactionList';
 
+import moment from 'moment';
+
 import { web3_eth_getBlock } from '../../web3Helpers';
 
 class Block extends Component {
@@ -61,12 +63,16 @@ class Block extends Component {
           <table>
             <tbody>
               <tr>
+                <td className="tdLabel">When: </td>
+                <td>{moment(this.state.block_ts).fromNow()}</td>
+              </tr>
+              <tr>
                 <td className="tdLabel">Height: </td>
                 <td>{block.number}</td>
               </tr>
               <tr>
                 <td className="tdLabel">Timestamp: </td>
-                <td>{this.state.block_ts}</td>
+                <td>{moment(this.state.block_ts).format()}</td>
               </tr>
               <tr>
                 <td className="tdLabel">Transactions: </td>
