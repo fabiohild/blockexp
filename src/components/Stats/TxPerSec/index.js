@@ -26,6 +26,10 @@ class TxPerSec extends Component {
   
   render() {
       var data = this.state.data.blocks;
+
+      if (!data.length){
+        return <pre>dead</pre>
+      }
       var txTotal = 0
       
       _.each(data, (value, index) => {
