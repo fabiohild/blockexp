@@ -30,12 +30,14 @@ class LatestTransactions extends Component {
 
     _.each(data.blocks[0].transactions, (value, index) => {
       if (index > 9) return false;
+      let hash = value.hash ? value.hash : value;
+
       tableRows.push(
         // required for ganache...
-        <tr key={value.hash}>
+        <tr key={hash}>
           <td>
             <small>
-              <Link to={`/tx/${value.hash}`}>{value.hash}</Link>
+              <Link to={`/tx/${hash}`}>{hash}</Link>
             </small>
           </td>
         </tr>
