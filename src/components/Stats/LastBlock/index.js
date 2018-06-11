@@ -40,7 +40,7 @@ class LastBlock extends Component {
 
     // Set the Component state
     this.setState({
-      // lastBlockTime: data.blocks[0].timestamp,
+      lastBlockTime: data.blocks[0].timestamp,
       count: 0
     })
   }

@@ -26,7 +26,7 @@ export const web3_eth_getBlock = i => {
 
 export const web3_eth_hashrate = () => {
   return new Promise((resolve, reject) => {
-    window.web3.eth.hashrate((err, data) => {
+    window.web3.eth.getHashrate((err, data) => {
       if (err) {
         reject(err);
       }
@@ -37,7 +37,7 @@ export const web3_eth_hashrate = () => {
 
 export const web3_eth_gasPrice = () => {
   return new Promise((resolve, reject) => {
-    window.web3.eth.gasPrice((err, data) => {
+    window.web3.eth.getGasPrice((err, data) => {
       if (err) {
         reject(err);
       }
@@ -48,7 +48,7 @@ export const web3_eth_gasPrice = () => {
 
 export const web3_net_peerCount = () => {
   return new Promise((resolve, reject) => {
-    window.web3.net.peerCount((err, data) => {
+    window.web3.net.getPeerCount((err, data) => {
       if (err) {
         reject(err);
       }

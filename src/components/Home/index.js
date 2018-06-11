@@ -12,7 +12,7 @@ class Home extends Component {
                 <Stats/>
             </div>
             <div>
-                <GithubCorner href="https://github.com/fabiohild/blockexp" octoColor="#303030" bannerColor="#00bc8c" direction="left" />
+                <GithubCorner href="https://github.com/transmute-industries/blockexp" octoColor="#303030" bannerColor="#00bc8c" direction="left" />
             </div>
         </div>
       );

@@ -18,6 +18,7 @@ import Constants from './../Constants';
 import {
   web3_eth_getBlockNumber,
   web3_eth_getBlock,
+  web3_eth_hashrate,
   web3_eth_gasPrice,
   web3_net_peerCount
 } from '../../web3Helpers';
@@ -50,9 +51,9 @@ class Stats extends Component {
 
       if (curr_block_no > this.state.blocks[0].number) {
         const block = await web3_eth_getBlock(curr_block_no, true);
-        const hashrate = await web3_eth_getBlock;
-        const gasPrice = await web3_eth_gasPrice;
-        const peerCount = await web3_net_peerCount;
+        const hashrate = await web3_eth_hashrate();
+        const gasPrice = await web3_eth_gasPrice();
+        const peerCount = await web3_net_peerCount();
 
         if (block) {
           this.state.blocks.pop();
@@ -81,9 +82,9 @@ class Stats extends Component {
       var currBlockObj = await web3_eth_getBlock(curr_block_no, true);
       blocks.push(currBlockObj);
     }
-    const hashrate = await web3_eth_getBlock;
-    const gasPrice = await web3_eth_gasPrice;
-    const peerCount = await web3_net_peerCount;
+    const hashrate = await web3_eth_hashrate();
+    const gasPrice = await web3_eth_gasPrice();
+    const peerCount = await web3_net_peerCount();
     this.setState({
       blocks: blocks,
       hashrate: hashrate,
