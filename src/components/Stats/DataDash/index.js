@@ -30,26 +30,15 @@ class DataDash extends Component {
   }
 
   render() {
-    if (!this.state.data) {
+    if (!this.state.data || !this.state.data.blocks.length) {
       return;
     }
+    
     let data = this.state.data;
 
     console.log(data)
 
-    // if (!data.gasPrice) {
-    //   data = {
-    //     ...data,
-    //     gasPrice: 1337
-    //   };
-    // }
-    // data = {
-    //   blocks: [{
-    //     difficulty: 1,
-    //     gasLimit: 10
-    //   }],
-    //   gasPrice: '10',
-    // }
+
 
     const difficulty = parseInt(data.blocks[0].difficulty, 10);
     const gasPrice = parseInt(data.gasPrice, 10);
