@@ -57,15 +57,24 @@ export const web3_net_peerCount = () => {
   });
 };
 
-// export const web3_eth_getBlock = (block_hash) => {
-//   return new Promise((resolve, reject) => {
-//     window.web3.eth.getBlock((block_hash, err, data) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       resolve(data);
-//     });
-//   });
-// };
+export const web3_eth_getBalance = addr => {
+  return new Promise((resolve, reject) => {
+    window.web3.eth.getBalance(addr, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
 
-// web3.eth.getBlock(block_hash);
+export const web3_eth_getTransactionCount = addr => {
+  return new Promise((resolve, reject) => {
+    window.web3.eth.getTransactionCount(addr, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
