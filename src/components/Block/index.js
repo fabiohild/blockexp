@@ -38,7 +38,7 @@ class Block extends Component {
     this.setState({
       block_id: currBlockObj.number,
       block_hash: currBlockObj.hash,
-      block_ts: Date(parseInt(this.state.block.timestamp, 10)).toString(),
+      block_ts: moment.unix(parseInt(currBlockObj.timestamp, 10)),
       block_txs: parseInt(currBlockObj.transactions.slice().length, 10),
       block: currBlockObj
     });
@@ -64,7 +64,7 @@ class Block extends Component {
             <tbody>
               <tr>
                 <td className="tdLabel">When: </td>
-                <td>{moment(this.state.block_ts).fromNow()}</td>
+                <td>{this.state.block_ts.fromNow()}</td>
               </tr>
               <tr>
                 <td className="tdLabel">Height: </td>
@@ -72,7 +72,7 @@ class Block extends Component {
               </tr>
               <tr>
                 <td className="tdLabel">Timestamp: </td>
-                <td>{moment(this.state.block_ts).format()}</td>
+                <td>{this.state.block_ts.format()}</td>
               </tr>
               <tr>
                 <td className="tdLabel">Transactions: </td>
