@@ -32,10 +32,10 @@ class LatestTransactions extends Component {
       if (index > 9) return false;
       tableRows.push(
         // required for ganache...
-        <tr key={value + index}>
+        <tr key={value.hash}>
           <td>
             <small>
-              <Link to={`/tx/${value}`}>{value}</Link>
+              <Link to={`/tx/${value.hash}`}>{value.hash}</Link>
             </small>
           </td>
         </tr>

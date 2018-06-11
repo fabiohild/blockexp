@@ -14,9 +14,9 @@ class TransactionList extends Component {
     };
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     // Get the block hash from URL arguments (defined by Route pattern)
-    this.getTransactionListState(this.props.block);
+    await this.getTransactionListState(this.props.block);
   }
 
   async getTransactionListState(block) {
@@ -31,9 +31,13 @@ class TransactionList extends Component {
 
   render() {
     var transactions = this.state.transactions;
+
+    if (!transactions){
+      return <pre>loading</pre>
+    }
     var tableRows = [];
     _.each(transactions, (value, index) => {
-      var txValue =
+      var txValue = 
         parseInt(transactions[index].value, 10) / 1000000000000000000;
       tableRows.push(
         <tr key={transactions[index].hash}>

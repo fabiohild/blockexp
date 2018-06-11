@@ -13,9 +13,9 @@ export const web3_eth_getBlockNumber = () => {
   });
 };
 
-export const web3_eth_getBlock = i => {
+export const web3_eth_getBlock = (i, opt = true) => {
   return new Promise((resolve, reject) => {
-    window.web3.eth.getBlock(i, (err, data) => {
+    window.web3.eth.getBlock(i, opt, (err, data) => {
       if (err) {
         reject(err);
       }
@@ -78,3 +78,27 @@ export const web3_eth_getTransactionCount = addr => {
     });
   });
 };
+
+export const web3_eth_getTransactionByHash = hash => {
+  return new Promise((resolve, reject) => {
+    window.web3.eth.getTransaction(hash, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+export const web3_eth_getTransactionReceipt = hash => {
+  return new Promise((resolve, reject) => {
+    window.web3.eth.getTransactionReceipt(hash, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  });
+};
+
+// getTransactionReceipt
