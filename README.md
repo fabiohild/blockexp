@@ -8,6 +8,11 @@ You can change the network in metamask, and the explorer will update. This is us
 
 ### Installing
 
+Install MetaMask:
+
+- [Chrome](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en)
+- [Brave](https://brave.com/)
+
 ```
 git clone https://github.com/fabiohild/blockexp
 cd blockexp
