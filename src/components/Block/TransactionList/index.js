@@ -1,50 +1,65 @@
 import React, { Component } from 'react';
 import './style.css';
-import { Link } from 'react-router-dom'
-import _ from 'lodash'
-import { Table } from 'react-bootstrap'
-import Constants from './../../Constants';
+import { Link } from 'react-router-dom';
+import _ from 'lodash';
+import { Table } from 'react-bootstrap';
 
-import Web3 from 'web3';
-var web3 = new Web3(new Web3.providers.HttpProvider(Constants.PROVIDER))
+import { web3_eth_getBlock } from '../../../web3Helpers';
 
 class TransactionList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       transactions: []
-      }
+    };
   }
-  
-  componentWillMount() {
+
+  async componentWillMount() {
     // Get the block hash from URL arguments (defined by Route pattern)
-    this.getTransactionListState(this.props.block);
+    await this.getTransactionListState(this.props.block);
   }
-  
-  getTransactionListState(block) {
-    var currblock = web3.eth.getBlock(block, true)
-    var currListObj = currblock.transactions
-    
+
+  async getTransactionListState(block) {
+    var currblock = await web3_eth_getBlock(block, true);
+    var currListObj = currblock.transactions;
+
     // Set the Component state
     this.setState({
       transactions: currListObj
-    })
+    });
   }
-  
+
   render() {
     var transactions = this.state.transactions;
+
+    if (!transactions){
+      return <pre>loading</pre>
+    }
     var tableRows = [];
-      _.each(transactions, (value, index) => {
-        var txValue = parseInt(transactions[index].value, 10) / 1000000000000000000;
-        tableRows.push(
-          <tr key={transactions[index].hash}>
-            <td><Link to={`/tx/${transactions[index].hash}`}><small>{transactions[index].hash}</small></Link></td>
-            <td><Link to={`/address/${transactions[index].from}`}><small>{transactions[index].from}</small></Link></td>
-            <td><Link to={`/address/${transactions[index].to}`}><small>{transactions[index].to}</small></Link></td>
-            <td>{txValue}</td>
-          </tr>
-        )
-      });
+    _.each(transactions, (value, index) => {
+      var txValue = 
+        parseInt(transactions[index].value, 10) / 1000000000000000000;
+      tableRows.push(
+        <tr key={transactions[index].hash}>
+          <td>
+            <Link to={`/tx/${transactions[index].hash}`}>
+              <small>{transactions[index].hash}</small>
+            </Link>
+          </td>
+          <td>
+            <Link to={`/address/${transactions[index].from}`}>
+              <small>{transactions[index].from}</small>
+            </Link>
+          </td>
+          <td>
+            <Link to={`/address/${transactions[index].to}`}>
+              <small>{transactions[index].to}</small>
+            </Link>
+          </td>
+          <td>{txValue}</td>
+        </tr>
+      );
+    });
     return (
       <div className="TransactionList">
         <div className="card border-secondary mb-3">
@@ -59,9 +74,7 @@ class TransactionList extends Component {
                   <th>Value</th>
                 </tr>
               </thead>
-              <tbody>
-                {tableRows}
-              </tbody>
+              <tbody>{tableRows}</tbody>
             </Table>
           </div>
         </div>
@@ -70,4 +83,3 @@ class TransactionList extends Component {
   }
 }
 export default TransactionList;
-
